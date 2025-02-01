@@ -1,11 +1,10 @@
-
 import apiAdmin from "../../services/API";
 
 const apiAuth = {
   loginFn: async (credentials: any) => {
     try {
       const data = await apiAdmin
-        .post("/login", credentials)
+        .post("user/login/", credentials)
         .then((res) => res.data);
       return data;
     } catch (error) {
@@ -21,4 +20,4 @@ const apiAuth = {
     }
   },
 };
-export default apiAuth
+export default apiAuth;

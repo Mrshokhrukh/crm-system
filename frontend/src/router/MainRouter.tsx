@@ -33,7 +33,7 @@ const MainRouter: React.FC<MainRouterProps> = () => {
     {
       path: "/",
       element: (
-        <PrivateRouter roles={["ADMIN", "REGISTRATOR", "DEVELOPER", "DOCTOR"]}>
+        <PrivateRouter roles={["ADMIN", "CUSTOMER"]}>
           <RootLayout />
         </PrivateRouter>
       ),

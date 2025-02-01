@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { STORAGE_KEYS } from "../utils/enums";
 const initialState = {
-  user: JSON.parse(localStorage.getItem("currentRole") || "{}"),
+  user: null,
   isLoggedIn: true,
   token: null,
   isLoggingLoading: true,
@@ -10,15 +11,21 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    loginReques: (state) => {
+    loginRequest: (state) => {
       state.isLoggingLoading = true;
       state.error = null;
     },
     loginSuccess: (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
-      // state.token = action.payload.token;
+      state.token = action.payload.token;
       state.isLoggingLoading = false;
+
+      localStorage.setItem("role", JSON.stringify(action.payload.user.role));
+      localStorage.setItem(
+        STORAGE_KEYS.TOKEN,
+        JSON.stringify(action.payload.token)
+      );
     },
     logout: (state) => {
       state.user = null;
@@ -33,6 +40,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { loginSuccess, logout, loginReject, loginReques } =
+export const { loginSuccess, logout, loginReject, loginRequest } =
   authSlice.actions;
 export default authSlice.reducer;

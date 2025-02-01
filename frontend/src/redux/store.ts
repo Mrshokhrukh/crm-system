@@ -1,8 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import authSlice from "./authSlice";
 import dashboarSlice from "./dashboardSlice";
+import { useDispatch } from "react-redux";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     authentication: authSlice,
     dashboard: dashboarSlice,
@@ -13,3 +14,17 @@ export const store = configureStore({
     });
   },
 });
+
+export type AppDispatch = typeof store.dispatch;
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+
+export default store;

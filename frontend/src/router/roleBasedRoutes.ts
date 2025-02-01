@@ -1,6 +1,6 @@
 import Home from "../pages/Home";
 import Registration from "../pages/registration/Registration";
-import { ADMINROUTES, REGISTRETORROUTES } from "../utils/enums";
+import { ADMINROUTES} from "../utils/enums";
 
 import {
   Check,
@@ -83,25 +83,18 @@ export const RoleRoutes: RoutesType = {
       element: Home,
     },
   ],
-  DEVELOPER: [],
-  REGISTRATOR: [
+  CUSTOMER: [
     {
       icon: HomeIcon,
       title: "Bosh sahifa",
-      path: REGISTRETORROUTES.DASHBOARD,
+      path: ADMINROUTES.DASHBOARD,
       element: Home,
     },
     {
       icon: File,
       title: "hujjatlar",
-      path: `${REGISTRETORROUTES.DOCUMENT}`,
+      path: `${ADMINROUTES.DOCUMENT}`,
       element: Home,
-    },
-    {
-      icon: Users,
-      title: "Registratsiya",
-      path: `${REGISTRETORROUTES.REGISTRATION}`,
-      element: Registration,
     },
   ],
 };

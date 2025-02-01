@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
 import ErrorBoundary from "./ErrorBoundary";
 import MainRouter from "./router/MainRouter";
+import store from "./redux/store";
 
 function App() {
   return (

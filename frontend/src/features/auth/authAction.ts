@@ -1,6 +1,6 @@
 import {
   loginReject,
-  loginReques,
+  loginRequest,
   loginSuccess,
   logout,
 } from "../../redux/authSlice";
@@ -9,8 +9,10 @@ import apiAuth from "./ApiAuth";
 
 export const login = (credentials: any) => async (dispatch: any) => {
   try {
-    dispatch(loginReques());
+    dispatch(loginRequest());
+
     const response = await apiAuth.loginFn(credentials);
+
     dispatch(loginSuccess(response));
   } catch (error: any) {
     dispatch(loginReject(error.message));

@@ -3,44 +3,50 @@ import { useNavigate } from "react-router-dom";
 import { ADMINROUTES, REGISTRETORROUTES, ROLES } from "../utils/enums";
 import UserSelect from "../components/UserSelect";
 import { Eye, EyeOff } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginSuccess } from "../redux/authSlice";
+import { login } from "../features/auth/authAction";
+import { LoginCredentials } from "../types/types";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../redux/store";
 
 type LoginProps = {};
 
 const Login: React.FC<LoginProps> = () => {
   let navigate = useNavigate();
-  const { isLoggedIn, user } = useSelector(
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
+  const { user, isLoggedIn } = useSelector(
     (state: any) => state.authentication
   );
+  const dispatch = useAppDispatch();
 
   const [showPassword, setShowPassword] = useState(false);
   const [selectedRole, setSelectedRole] = useState<any>();
-  const dispatch = useDispatch();
 
   const onchange = (role: any) => {
-    localStorage.setItem("currentRole", JSON.stringify(role));
     setSelectedRole(role);
-    dispatch(loginSuccess({ user: role }));
+    setUserData({ ...userData, role: role.role });
   };
 
   const onSubmit = (e: any) => {
     e.preventDefault();
 
+    const credentials: LoginCredentials = userData;
+
+    dispatch(login(credentials));
+
     if (isLoggedIn && user) {
-      switch (selectedRole.role.toUpperCase()) {
+      switch (user.role.toUpperCase()) {
         case ROLES.ADMIN: {
+          console.log("he");
           navigate(`${ADMINROUTES.DASHBOARD}`);
           break;
         }
-        case ROLES.REGISTRATOR: {
-          navigate(`${REGISTRETORROUTES.DASHBOARD}`);
-          break;
-        }
-        case ROLES.DEVELOPER: {
-          break;
-        }
-        case ROLES.DOCTOR: {
+        case ROLES.CUSTOMER: {
+          console.log("he");
+          navigate(`${ADMINROUTES.DASHBOARD}`);
           break;
         }
       }
@@ -69,10 +75,36 @@ const Login: React.FC<LoginProps> = () => {
               htmlFor="password"
               className="text-sm font-medium text-gray-700 mb-1"
             >
+              Email <span>*</span>
+              <div className="relative">
+                <input
+                  type={"email"}
+                  name="email"
+                  onChange={(e) =>
+                    setUserData({ ...userData, email: e.target.value })
+                  }
+                  value={userData.email || ""}
+                  placeholder="email kiriting..."
+                  className="outline-none w-full px-4 py-2 border rounded-md focus:ring-black focus:border-gray-600"
+                />
+              </div>
+            </label>
+          </div>
+
+          <div className="mt-4">
+            <label
+              htmlFor="password"
+              className="text-sm font-medium text-gray-700 mb-1"
+            >
               Parol <span>*</span>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
+                  onChange={(e) =>
+                    setUserData({ ...userData, password: e.target.value })
+                  }
+                  value={userData.password || ""}
                   placeholder="parol kiriting..."
                   className="outline-none w-full px-4 py-2 border rounded-md focus:ring-black focus:border-gray-600"
                 />

@@ -14,4 +14,9 @@ export type ADMIN = {
   path: string;
   title?: any;
 };
-
+[];
+export type LoginCredentials = {
+  email: string;
+  password: string;
+  role: string;
+};
