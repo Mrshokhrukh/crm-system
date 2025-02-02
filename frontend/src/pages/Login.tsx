@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ADMINROUTES, REGISTRETORROUTES, ROLES } from "../utils/enums";
+import { ROUTES, ROLES } from "../utils/enums";
 import UserSelect from "../components/UserSelect";
 import { Eye, EyeOff } from "lucide-react";
 import { login } from "../features/auth/authAction";
@@ -38,15 +38,13 @@ const Login: React.FC<LoginProps> = () => {
     dispatch(login(credentials));
 
     if (isLoggedIn && user) {
-      switch (user.role.toUpperCase()) {
+      switch (user.role?.toUpperCase()) {
         case ROLES.ADMIN: {
-          console.log("he");
-          navigate(`${ADMINROUTES.DASHBOARD}`);
+          navigate(`${ROUTES.DASHBOARD}`);
           break;
         }
         case ROLES.CUSTOMER: {
-          console.log("he");
-          navigate(`${ADMINROUTES.DASHBOARD}`);
+          navigate(`${ROUTES.DASHBOARD}`);
           break;
         }
       }
@@ -84,6 +82,7 @@ const Login: React.FC<LoginProps> = () => {
                     setUserData({ ...userData, email: e.target.value })
                   }
                   value={userData.email || ""}
+                  required
                   placeholder="email kiriting..."
                   className="outline-none w-full px-4 py-2 border rounded-md focus:ring-black focus:border-gray-600"
                 />
@@ -106,6 +105,7 @@ const Login: React.FC<LoginProps> = () => {
                   }
                   value={userData.password || ""}
                   placeholder="parol kiriting..."
+                  required
                   className="outline-none w-full px-4 py-2 border rounded-md focus:ring-black focus:border-gray-600"
                 />
                 <button

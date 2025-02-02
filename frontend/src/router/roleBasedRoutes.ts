@@ -1,6 +1,6 @@
 import Home from "../pages/Home";
 import Registration from "../pages/registration/Registration";
-import { ADMINROUTES} from "../utils/enums";
+import { ROUTES } from "../utils/enums";
 
 import {
   Check,
@@ -30,56 +30,56 @@ export const RoleRoutes: RoutesType = {
     {
       icon: HomeIcon,
       title: "Bosh sahifa",
-      path: ADMINROUTES.DASHBOARD,
+      path: ROUTES.DASHBOARD,
       element: Home,
       index: true,
     },
     {
       icon: User,
       title: "hisobotlar",
-      path: `${ADMINROUTES.HISOBOTLAR}`,
+      path: `${ROUTES.HISOBOTLAR}`,
       element: Home,
     },
     {
       icon: File,
       title: "hujjatlar",
-      path: `${ADMINROUTES.DOCUMENT}`,
+      path: `${ROUTES.DOCUMENT}`,
       element: Home,
     },
     {
       icon: Info,
       title: "Ma'lumotlar",
-      path: ADMINROUTES.MALUMOTLAR,
+      path: ROUTES.MALUMOTLAR,
       element: Home,
     },
     {
       icon: Users,
       title: "Bemorlar",
-      path: ADMINROUTES.BEMORLAR,
+      path: ROUTES.BEMORLAR,
       element: Home,
     },
     {
       icon: Users2,
       title: "Hodimlar",
-      path: ADMINROUTES.HODIMLAR,
+      path: ROUTES.HODIMLAR,
       element: Home,
     },
     {
       icon: Package,
       title: "mahsulotlar",
-      path: ADMINROUTES.MAHSULOT,
+      path: ROUTES.MAHSULOT,
       element: Home,
     },
     {
       icon: Check,
       title: "Tekshiruv",
-      path: ADMINROUTES.TEKSHIRUV,
+      path: ROUTES.TEKSHIRUV,
       element: Home,
     },
     {
       icon: User,
       title: "Navbatlar",
-      path: ADMINROUTES.NAVBATLAR,
+      path: ROUTES.NAVBATLAR,
       element: Home,
     },
   ],
@@ -87,13 +87,56 @@ export const RoleRoutes: RoutesType = {
     {
       icon: HomeIcon,
       title: "Bosh sahifa",
-      path: ADMINROUTES.DASHBOARD,
+      path: ROUTES.DASHBOARD,
+      element: Home,
+      index: true,
+    },
+    {
+      icon: User,
+      title: "hisobotlar",
+      path: `${ROUTES.HISOBOTLAR}`,
       element: Home,
     },
     {
       icon: File,
       title: "hujjatlar",
-      path: `${ADMINROUTES.DOCUMENT}`,
+      path: `${ROUTES.DOCUMENT}`,
+      element: Home,
+    },
+    {
+      icon: Info,
+      title: "Ma'lumotlar",
+      path: ROUTES.MALUMOTLAR,
+      element: Home,
+    },
+    {
+      icon: Users,
+      title: "Bemorlar",
+      path: ROUTES.BEMORLAR,
+      element: Home,
+    },
+    {
+      icon: Users2,
+      title: "Hodimlar",
+      path: ROUTES.HODIMLAR,
+      element: Home,
+    },
+    {
+      icon: Package,
+      title: "mahsulotlar",
+      path: ROUTES.MAHSULOT,
+      element: Home,
+    },
+    {
+      icon: Check,
+      title: "Tekshiruv",
+      path: ROUTES.TEKSHIRUV,
+      element: Home,
+    },
+    {
+      icon: User,
+      title: "Navbatlar",
+      path: ROUTES.NAVBATLAR,
       element: Home,
     },
   ],

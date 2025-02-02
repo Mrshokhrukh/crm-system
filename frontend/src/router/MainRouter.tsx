@@ -5,7 +5,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { ADMINROUTES as ROUTES } from "../utils/enums";
+import { ROUTES } from "../utils/enums";
 import Login from "../pages/Login";
 import RootLayout from "../layout/RootLayout";
 import PrivateRouter from "./PrivateRouter";

@@ -1,4 +1,4 @@
-export const ADMINROUTES = {
+export const ROUTES = {
   LOGIN: "/",
   DASHBOARD: "/admin-dashboard",
   HISOBOTLAR: "/reports",
