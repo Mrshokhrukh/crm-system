@@ -20,7 +20,9 @@ type MainRouterProps = {};
 
 const MainRouter: React.FC<MainRouterProps> = () => {
   const { user } = useSelector((state: any) => state.authentication);
-
+  
+  console.log(user);
+  
   const router = createBrowserRouter([
     {
       path: ROUTES.LOGIN,

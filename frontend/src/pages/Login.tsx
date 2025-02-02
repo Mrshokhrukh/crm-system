@@ -48,7 +48,7 @@ const Login: React.FC<LoginProps> = () => {
       console.log("login error in Login.tsx");
     }
 
-    if (isLoggedIn && user) {
+    if (user) {
       console.log("admin", user.role?.toUpperCase() === ROLES.ADMIN);
       console.log("customer", user.role?.toUpperCase() === ROLES.CUSTOMER);
 
