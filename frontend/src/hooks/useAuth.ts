@@ -3,13 +3,15 @@ import { logout } from "../redux/authSlice";
 
 const useAuth = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state: any) => state.authentication);
+  const { isLoggedIn, user, isLoggingLoading, token } = useSelector(
+    (state: any) => state.authentication
+  );
 
   const logoutFuntion = () => {
     dispatch(logout());
   };
 
-  return { isLoggedIn, logoutFuntion };
+  return { isLoggedIn, user, isLoggingLoading, token, logoutFuntion };
 };
 
-export default useAuth();
+export default useAuth;

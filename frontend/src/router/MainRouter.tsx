@@ -19,8 +19,7 @@ const createRouteByRole = (userRole: any) => {
 type MainRouterProps = {};
 
 const MainRouter: React.FC<MainRouterProps> = () => {
-  const { user } = useSelector((state: any) => state.authentication);
-  
+ 
 
   const router = createBrowserRouter([
     {

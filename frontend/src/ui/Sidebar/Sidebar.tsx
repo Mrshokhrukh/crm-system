@@ -2,12 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RoleRoutes } from "../../router/roleBasedRoutes";
+import useAuth from "../../hooks/useAuth";
 
 type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
-  const { user } = useSelector((state: any) => state.authentication);
-  console.log("in sidebar, user: ", user);
+  const { user } = useAuth();
+  console.log('in sidebar user: ', user);
 
   // const routes = RoleRoutes[user?.role.toUpperCase()];
   const routes = RoleRoutes["CUSTOMER"];
