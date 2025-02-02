@@ -11,14 +11,10 @@ const Home: React.FC<HomeProps> = () => {
         <StatCard bgColor="bg-white" text="bemorlar soni" number={234} />
         <StatCard bgColor="bg-white" text="hodimlar soni" number={34} />
         <StatCard bgColor="bg-white" text="xonalar soni" number={12} />
-        <StatCard
-          bgColor="bg-white"
-          text="tekshiruvlar soni"
-          number={34}
-        />
+        <StatCard bgColor="bg-white" text="tekshiruvlar soni" number={34} />
       </div>
 
-      <Chart />   
+      <Chart />
     </div>
   );
 };

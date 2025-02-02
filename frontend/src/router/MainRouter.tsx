@@ -16,7 +16,7 @@ const createRouteByRole = (userRole: any) => {
 
   return routes.map(({ path, element }) => ({
     path,
-    element: React.createElement(element), // Here we render the component dynamically
+    element: React.createElement(element),
   }));
 };
 

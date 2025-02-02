@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 type PrivateRouterProps = {
   children: React.ReactNode;
@@ -12,11 +12,11 @@ const PrivateRouter: React.FC<PrivateRouterProps> = ({ children, roles }) => {
     (state: any) => state.authentication
   );
 
-  // if (roles && !roles.includes(user.role)) {
-  //   return <Navigate to="/" />;
-  // }
+  if (roles && !roles.includes(user.role)) {
+    return <Navigate to="/" />;
+  }
 
-  if (!isLoggedIn) {
+  if (!user) {
     return <Navigate to="/" />;
   }
 
