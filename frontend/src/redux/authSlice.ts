@@ -3,7 +3,7 @@ import { STORAGE_KEYS } from "../utils/enums";
 const initialState = {
   user: null,
   isLoggedIn: true,
-  token: null,
+  token: localStorage.getItem(STORAGE_KEYS.TOKEN), 
   isLoggingLoading: true,
   error: null,
 };

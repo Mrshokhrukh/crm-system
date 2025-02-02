@@ -1,10 +1,6 @@
 import React from "react";
 import { RoleRoutes } from "./roleBasedRoutes";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ROUTES } from "../utils/enums";
 import Login from "../pages/Login";
 import RootLayout from "../layout/RootLayout";
