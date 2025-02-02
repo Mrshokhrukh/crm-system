@@ -1,14 +1,14 @@
 export const ROUTES = {
   LOGIN: "/",
-  DASHBOARD: "/admin-dashboard",
-  HISOBOTLAR: "/reports",
-  DOCUMENT: "/documents",
-  MALUMOTLAR: "/information",
-  HODIMLAR: "/stuff",
-  BEMORLAR: "/patients",
-  NAVBATLAR: "/queues",
-  TEKSHIRUV: "/inspections",
-  MAHSULOT: "/products",
+  DASHBOARD: "/erp/admin-dashboard",
+  HISOBOTLAR: "/erp/reports",
+  DOCUMENT: "/erp/documents",
+  MALUMOTLAR: "/erp/information",
+  HODIMLAR: "/erp/stuff",
+  BEMORLAR: "/erp/patients",
+  NAVBATLAR: "/erp/queues",
+  TEKSHIRUV: "/erp/inspections",
+  MAHSULOT: "/erp/products",
 };
 
 export const ROLES = {

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { STORAGE_KEYS } from "../utils/enums";
 const initialState = {
   user: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   token: localStorage.getItem(STORAGE_KEYS.TOKEN), 
   isLoggingLoading: true,
   error: null,

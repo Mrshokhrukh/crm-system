@@ -11,7 +11,7 @@ import { ROLES, ROUTES } from "../utils/enums";
 type LoginProps = {};
 
 const Login: React.FC<LoginProps> = () => {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     email: "john@example.com",
@@ -19,9 +19,9 @@ const Login: React.FC<LoginProps> = () => {
     role: "",
   });
 
-  const { user, isLoggedIn } = useSelector(
-    (state: any) => state.authentication
-  );
+  // const { user, isLoggedIn } = useSelector(
+  //   (state: any) => state.authentication
+  // );
 
   const dispatch = useAppDispatch();
 
@@ -48,21 +48,18 @@ const Login: React.FC<LoginProps> = () => {
       console.log("login error in Login.tsx");
     }
 
-    if (user) {
-      console.log("admin", user.role?.toUpperCase() === ROLES.ADMIN);
-      console.log("customer", user.role?.toUpperCase() === ROLES.CUSTOMER);
-
-      switch (user.role?.toUpperCase()) {
-        case ROLES.ADMIN: {
-          navigate(`${ROUTES.DASHBOARD}`);
-          break;
-        }
-        case ROLES.CUSTOMER: {
-          navigate(`${ROUTES.DASHBOARD}`);
-          break;
-        }
-      }
-    }
+    // if (user) {
+    //   switch (user.role?.toUpperCase()) {
+    //     case ROLES.ADMIN: {
+    //       navigate(`${ROUTES.DASHBOARD}`);
+    //       break;
+    //     }
+    //     case ROLES.CUSTOMER: {
+    //       navigate(`${ROUTES.DASHBOARD}`);
+    //       break;
+    //     }
+    //   }
+    // }
 
     setUserData({
       email: "",
@@ -90,7 +87,7 @@ const Login: React.FC<LoginProps> = () => {
 
           <div className="mt-4">
             <label
-              htmlFor="password"
+              htmlFor="email"
               className="text-sm font-medium text-gray-700 mb-1"
             >
               Email <span>*</span>

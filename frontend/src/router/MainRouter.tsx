@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 
 const createRouteByRole = (userRole: any) => {
   const routes = RoleRoutes[userRole?.toUpperCase()] || [];
-
   return routes.map(({ path, element }) => ({
     path,
     element: React.createElement(element),
@@ -20,18 +19,16 @@ type MainRouterProps = {};
 
 const MainRouter: React.FC<MainRouterProps> = () => {
   const { user } = useSelector((state: any) => state.authentication);
-  
-  console.log(user);
-  
+
   const router = createBrowserRouter([
     {
-      path: ROUTES.LOGIN,
+      path: "/",
       element: <Login />,
     },
     {
-      path: "/",
+      path: "/erp",
       element: (
-        <PrivateRouter roles={["ADMIN", "CUSTOMER"]}>
+        <PrivateRouter roles={[user?.role]}>
           <RootLayout />
         </PrivateRouter>
       ),

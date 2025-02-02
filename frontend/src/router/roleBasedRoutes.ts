@@ -1,5 +1,5 @@
 import Home from "../pages/Home";
-import Registration from "../pages/registration/Registration";
+// import Registration from "../pages/registration/Registration";
 import { ROUTES } from "../utils/enums";
 
 import {
