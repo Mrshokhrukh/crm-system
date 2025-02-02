@@ -20,6 +20,7 @@ type MainRouterProps = {};
 
 const MainRouter: React.FC<MainRouterProps> = () => {
   const { user } = useSelector((state: any) => state.authentication);
+  
 
   const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ const MainRouter: React.FC<MainRouterProps> = () => {
       children: [
         {
           index: true,
-          path: "/erp/admin-dashboard",
+          path: "/erp/dashboard",
           element: <Home />,
         },
       ],

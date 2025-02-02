@@ -40,15 +40,13 @@ const Login: React.FC<LoginProps> = () => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
-    try {
+ 
       const credentials: LoginCredentials = userData;
 
       dispatch(login(credentials));
       navigate(`${ROUTES.DASHBOARD}`);
-      
-    } catch (error) {
-      console.log("login error in Login.tsx");
-    }
+
+    
 
 
     // if (user) {

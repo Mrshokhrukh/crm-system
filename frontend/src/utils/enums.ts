@@ -1,6 +1,6 @@
 export const ROUTES = {
   LOGIN: "/",
-  DASHBOARD: "/erp/admin-dashboard",
+  DASHBOARD: "/erp/dashboard",
   HISOBOTLAR: "/erp/reports",
   DOCUMENT: "/erp/documents",
   MALUMOTLAR: "/erp/information",

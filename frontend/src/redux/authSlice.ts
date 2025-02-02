@@ -4,7 +4,7 @@ const initialState = {
   user: null,
   isLoggedIn: false,
   token: localStorage.getItem(STORAGE_KEYS.TOKEN), 
-  isLoggingLoading: true,
+  isLoggingLoading: false,
   error: null,
 };
 const authSlice = createSlice({
