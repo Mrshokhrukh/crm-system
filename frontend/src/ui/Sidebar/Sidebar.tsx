@@ -7,16 +7,17 @@ type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
   const { user } = useSelector((state: any) => state.authentication);
-  console.log("in sidebar ", user);
+  console.log("in sidebar, user: ", user);
 
-  const routes = RoleRoutes[user?.role.toUpperCase()];
+  // const routes = RoleRoutes[user?.role.toUpperCase()];
+  const routes = RoleRoutes["CUSTOMER"];
 
   return (
     <div className="w-72 h-screen bg-white p-4 text-black border-r">
       <h1 className="text-2xl font-bold mb-8">Digimed Dental</h1>
 
       <nav>
-        {routes.map((item, index) => {
+        {routes?.map((item, index) => {
           return (
             <NavLink
               to={item.path}

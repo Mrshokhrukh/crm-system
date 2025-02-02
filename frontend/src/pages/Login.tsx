@@ -11,7 +11,7 @@ import { ROLES, ROUTES } from "../utils/enums";
 type LoginProps = {};
 
 const Login: React.FC<LoginProps> = () => {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     email: "john@example.com",
@@ -44,9 +44,12 @@ const Login: React.FC<LoginProps> = () => {
       const credentials: LoginCredentials = userData;
 
       dispatch(login(credentials));
+      navigate(`${ROUTES.DASHBOARD}`);
+      
     } catch (error) {
       console.log("login error in Login.tsx");
     }
+
 
     // if (user) {
     //   switch (user.role?.toUpperCase()) {
@@ -123,6 +126,7 @@ const Login: React.FC<LoginProps> = () => {
                   className="outline-none w-full px-4 py-2 border rounded-md focus:ring-black focus:border-gray-600"
                 />
                 <button
+                  type="button"
                   className="absolute right-3 top-2 text-gray-500"
                   onClick={() => setShowPassword(!showPassword)}
                 >

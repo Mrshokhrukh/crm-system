@@ -6,11 +6,11 @@ import store from "./redux/store";
 function App() {
   return (
     <>
-      <ErrorBoundary error="An error occurred" hasError={false}>
+      {/* <ErrorBoundary error="An error occurred" hasError={false}> */}
         <Provider store={store}>
           <MainRouter />
         </Provider>
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
     </>
   );
 }
