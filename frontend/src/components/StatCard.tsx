@@ -1,19 +1,19 @@
-import React from "react";
+interface StatCardProps {
+  icon: any;
+  title: string;
+  value: string;
+}
 
-type StatCardProps = {
-  number: number;
-  bgColor: string;
-  text: string;
-};
-
-const StatCard: React.FC<StatCardProps> = ({ bgColor, number, text }) => {
+export default function StatCard({ icon: Icon, title, value }: StatCardProps) {
   return (
-    <div
-      className={`${bgColor} border rounded-xl p-6 text-black shadow-sm cursor-pointer hover:scale-[102%] transition-all duration-150`}
-    >
-      <h1 className="text-4xl font-bold mb-2">{number}</h1>
-      <p className="text-lg">{text}</p>
+    <div className="bg-white p-6 rounded-lg shadow-sm border cursor-pointer hover:scale-105 transition-all duration-200">
+      <div className="flex flex-col">
+        <div className="text-gray-500 text-sm mb-2">{title}</div>
+        <div className="flex items-center space-x-2">
+          <Icon size={24} className="text-gray-400" />
+          <span className="text-xl font-semibold">{value}</span>
+        </div>
+      </div>
     </div>
   );
-};
-export default StatCard;
+}

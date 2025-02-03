@@ -6,9 +6,13 @@ import Header from "../ui/Header/Header";
 type RootLayoutProps = {};
 
 const RootLayout: React.FC<RootLayoutProps> = () => {
+  const isOpen = true;
   return (
     <div className="flex gap-2">
-      <Sidebar />
+      {/* <div className={`fixed ${isOpen ? "left-0" : "left-[-100%]"} sm:static z-50 transition-all duration-200`}> */}
+      <div className={``}>
+        <Sidebar />
+      </div>
       <div className="w-full">
         <Header />
         <Outlet />

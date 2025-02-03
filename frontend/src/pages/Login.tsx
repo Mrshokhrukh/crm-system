@@ -7,21 +7,19 @@ import { LoginCredentials } from "../types/types";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../redux/store";
 import { ROLES, ROUTES } from "../utils/enums";
+import useAuth from "../hooks/useAuth";
 
 type LoginProps = {};
 
 const Login: React.FC<LoginProps> = () => {
   let navigate = useNavigate();
+  const { user } = useAuth();
 
   const [userData, setUserData] = useState({
     email: "john@example.com",
     password: "password123",
     role: "",
   });
-
-  // const { user, isLoggedIn } = useSelector(
-  //   (state: any) => state.authentication
-  // );
 
   const dispatch = useAppDispatch();
 
@@ -37,17 +35,17 @@ const Login: React.FC<LoginProps> = () => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e: any) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
 
- 
-      const credentials: LoginCredentials = userData;
+    const credentials: LoginCredentials = userData;
 
-      dispatch(login(credentials));
-      navigate(`${ROUTES.DASHBOARD}`);
+    dispatch(login(credentials));
 
+    console.log(credentials);
     
-
+    
+    navigate(`${ROUTES.DASHBOARD}`);
 
     // if (user) {
     //   switch (user.role?.toUpperCase()) {
