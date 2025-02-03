@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import SearchBar from "../../PageComponents/registrator/components/SearchBar";
-import RegistrationTable from "../../PageComponents/registrator/components/RegistrationTable";
-import Pagination from "../../components/Pagination";
-import RegisterForm from "../../PageComponents/registrator/components/RegisterForm";
 import { Plus, RefreshCcw } from "lucide-react";
+import RegisterForm from "../PageComponents/registrator/components/RegisterForm";
+import Pagination from "../components/Pagination";
+import RegistrationTable from "../PageComponents/registrator/components/RegistrationTable";
+import SearchBar from "../PageComponents/registrator/components/SearchBar";
 
 type RegistrationProps = {};
 

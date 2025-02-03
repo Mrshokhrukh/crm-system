@@ -40,10 +40,9 @@ const Login: React.FC<LoginProps> = () => {
 
     const credentials: LoginCredentials = userData;
 
-    dispatch(login(credentials));
-
-    console.log(credentials);
-    
+    dispatch(login(credentials));   
+     
+    console.log(`${ROUTES.DASHBOARD}`);
     
     navigate(`${ROUTES.DASHBOARD}`);
 

@@ -39,6 +39,7 @@ export default function ProductsList() {
   const [searchQuery, setSearchQuery] = useState('');
   const [skuFilter, setSkuFilter] = useState('');
 
+
   const filteredProducts = useMemo(() => {
     return sampleProducts.filter(product => {
       const matchesSearch = searchQuery.trim() === '' || 
@@ -54,6 +55,7 @@ export default function ProductsList() {
     });
   }, [searchQuery, skuFilter]);
 
+
   const toggleProductSelection = (productId: number) => {
     setSelectedProducts(prev => 
       prev.includes(productId) 
@@ -61,6 +63,7 @@ export default function ProductsList() {
         : [...prev, productId]
     );
   };
+
 
   return (
     <div className="flex-1 bg-gray-50">
