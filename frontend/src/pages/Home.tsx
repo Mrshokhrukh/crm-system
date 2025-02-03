@@ -7,7 +7,7 @@ type HomeProps = {};
 
 const Home: React.FC<HomeProps> = () => {
   return (
-    <div className="w-full p-6 space-y-6">
+    <div className="w-full md:p-6 p-3 space-y-6">
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-medium">Bosh sahifa</h2>

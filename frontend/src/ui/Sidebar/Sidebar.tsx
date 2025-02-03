@@ -33,7 +33,7 @@ const menuItems = [
     icon: Package,
     label: "Mahsulotlar",
     subItems: [
-      { icon: ListOrdered, label: "Mahsulotlar royxati", path: "/products" },
+      { icon: ListOrdered, label: "Mahsulotlar royxati", path: "/erp/products" },
       { icon: ShoppingCart, label: "Sotuvlar royxati", path: "/sales" },
       { icon: Download, label: "Tushirilgan mahsulotlar royxati", path: "/downloaded-products" },
       { icon: RotateCcw, label: "Qaytgan mahsulotlar royxati", path: "/returned-products" },
@@ -71,15 +71,17 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const handleNavigation = (path?: string) => {
     if (path) {
       navigate(path);
+      setIsSidebarOpen(false)
     }
   };
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-
       if (window.innerWidth < 768) {
         setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
       }
     };
 
@@ -122,13 +124,12 @@ const Sidebar: React.FC<SidebarProps> = () => {
 
   return (
     <div className="relative flex h-screen">
-      {/* Main Sidebar */}
       <div className={`bg-white border-r shadow-sm h-full transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-20"}`}>
         <div className="p-4">
           {menuItems.map((item, index) => (
             <div key={index}>
               <div
-                className={`flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2 ${activeMenu === item.label ? "bg-green-50 text-green-700" : "hover:bg-gray-50"}`}
+                className={`hover:bg-slate-100 flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2${activeMenu === item.label ? "bg-green-50 text-green-700" : "hover:bg-gray-200"}`}
                 onClick={() => {
                   if (item.subItems) {
                     toggleSubmenu(item.label);
@@ -141,7 +142,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
                 {isSidebarOpen && (
                   <>
                     <span className="flex-1">{item.label}</span>
-                    {item.subItems && <ChevronDown size={16} className={`transform transition-transform ${activeMenu === item.label ? "rotate-180" : ""}`} />}
+                    {item.subItems && <ChevronDown size={16} className={`transform transition-transform ${activeMenu === item.label ? "rotate-[90deg]" : "rotate-[-90deg]"}`} />}
                   </>
                 )}
               </div>
@@ -150,8 +151,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         </div>
       </div>
 
-      {/* Nested Sidebar */}
-      <div className={`absolute left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64" : "w-0"}`}>
+      <div className={`absolute md:left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64" : "w-0"}`}>
         <div className="p-4">
           <div className="mb-4">
             <h3 className="text-sm font-medium text-gray-500 px-3">Mahsulotlar bo'limi</h3>
@@ -161,7 +161,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
             ?.subItems?.map((subItem, index) => (
               <div
                 key={index}
-                className={` group flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2 transition-colors duration-200 ${
+                className={`group flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2 transition-colors duration-200 ${
                   activeSubItem === subItem.label ? "bg-green-50 text-green-700" : "hover:bg-gray-50"
                 }`}
                 onClick={() => {

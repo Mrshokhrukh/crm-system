@@ -7,6 +7,7 @@ import RootLayout from "../layout/RootLayout";
 import PrivateRouter from "./PrivateRouter";
 import { useSelector } from "react-redux";
 import Home from "../pages/Home";
+import ProductsList from "../pages/ProductsList";
 
 const createRouteByRole = (userRole: any) => {
   const routes = RoleRoutes[userRole?.toUpperCase()] || [];
@@ -19,8 +20,6 @@ const createRouteByRole = (userRole: any) => {
 type MainRouterProps = {};
 
 const MainRouter: React.FC<MainRouterProps> = () => {
- 
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -38,6 +37,11 @@ const MainRouter: React.FC<MainRouterProps> = () => {
           index: true,
           path: "/erp/dashboard",
           element: <Home />,
+        },
+        {
+          index: true,
+          path: "/erp/products",
+          element: <ProductsList />,
         },
       ],
       // createRouteByRole(user?.role)
