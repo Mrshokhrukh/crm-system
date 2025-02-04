@@ -71,7 +71,8 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const handleNavigation = (path?: string) => {
     if (path) {
       navigate(path);
-      setIsSidebarOpen(false)
+      setIsSidebarOpen(false);
+      setActiveMenu(null);
     }
   };
 
@@ -129,7 +130,9 @@ const Sidebar: React.FC<SidebarProps> = () => {
           {menuItems.map((item, index) => (
             <div key={index}>
               <div
-                className={`hover:bg-slate-100 flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2${activeMenu === item.label ? "bg-green-50 text-green-700" : "hover:bg-gray-200"}`}
+                className={`hover:bg-slate-100 flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2${
+                  activeMenu === item.label ? "bg-green-50 text-green-700" : "hover:bg-gray-200"
+                }`}
                 onClick={() => {
                   if (item.subItems) {
                     toggleSubmenu(item.label);
@@ -151,7 +154,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         </div>
       </div>
 
-      <div className={`absolute md:left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64" : "w-0"}`}>
+      <div className={`absolute left-[-300px] md:left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64" : "w-0"}`}>
         <div className="p-4">
           <div className="mb-4">
             <h3 className="text-sm font-medium text-gray-500 px-3">Mahsulotlar bo'limi</h3>
