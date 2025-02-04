@@ -9,15 +9,15 @@ type PrivateRouterProps = {
 };
 
 const PrivateRouter: React.FC<PrivateRouterProps> = ({ children, roles }) => {
-  const { user, isLoggedIn } = useAuth();
+  // const { user, isLoggedIn } = useAuth();
 
-  if (roles && !roles.includes(user?.role.toUpperCase())) {
-    return <Navigate to="/" />;
-  }
+  // if (roles && !roles.includes(user?.role.toUpperCase())) {
+  //   return <Navigate to="/" />;
+  // }
 
-  if (!isLoggedIn && !user) {
-    return <Navigate to="/" />;
-  }
+  // if (!isLoggedIn && !user) {
+  //   return <Navigate to="/" />;
+  // }
 
   return children;
 };

@@ -26,7 +26,7 @@ const MainRouter: React.FC<MainRouterProps> = () => {
       element: <Login />,
     },
     {
-      path: "/erp",
+      path: "/",
       element: (
         <PrivateRouter roles={["ADMIN", "CUSTOMER"]}>
           <RootLayout />
@@ -35,12 +35,12 @@ const MainRouter: React.FC<MainRouterProps> = () => {
       children: [
         {
           index: true,
-          path: "/erp/dashboard",
+          path: "/dashboard",
           element: <Home />,
         },
         {
           index: true,
-          path: "/erp/products",
+          path: "/products",
           element: <ProductsList />,
         },
       ],

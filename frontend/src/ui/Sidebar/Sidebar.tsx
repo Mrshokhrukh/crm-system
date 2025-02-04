@@ -33,7 +33,7 @@ const menuItems = [
     icon: Package,
     label: "Mahsulotlar",
     subItems: [
-      { icon: ListOrdered, label: "Mahsulotlar royxati", path: "/erp/products" },
+      { icon: ListOrdered, label: "Mahsulotlar royxati", path: "/products" },
       { icon: ShoppingCart, label: "Sotuvlar royxati", path: "/sales" },
       { icon: Download, label: "Tushirilgan mahsulotlar royxati", path: "/downloaded-products" },
       { icon: RotateCcw, label: "Qaytgan mahsulotlar royxati", path: "/returned-products" },
@@ -64,6 +64,8 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const [activeSubItem, setActiveSubItem] = useState<string | null>(null);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
+  const subItems = menuItems?.find((val: any) => val.label === "Mahsulotlar")?.subItems;
+
   const toggleSubmenu = (label: string) => {
     setActiveMenu(activeMenu === label ? null : label);
   };
@@ -72,6 +74,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
     if (path) {
       navigate(path);
       setIsSidebarOpen(false);
+
       setActiveMenu(null);
     }
   };
@@ -153,15 +156,13 @@ const Sidebar: React.FC<SidebarProps> = () => {
           ))}
         </div>
       </div>
-
-      <div className={`absolute left-[-300px] md:left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64" : "w-0"}`}>
-        <div className="p-4">
-          <div className="mb-4">
-            <h3 className="text-sm font-medium text-gray-500 px-3">Mahsulotlar bo'limi</h3>
-          </div>
-          {menuItems
-            .find((item) => item.label === "Mahsulotlar")
-            ?.subItems?.map((subItem, index) => (
+      {subItems && (
+        <div className={`absolute left-[-300px] md:left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64 opacity-100" : "w-0 opacity-0"}`}>
+          <div className="p-4">
+            <div className="mb-4">
+              <h3 className="text-sm font-medium text-gray-500 px-3">Mahsulotlar bo'limi</h3>
+            </div>
+            {subItems.map((subItem, index) => (
               <div
                 key={index}
                 className={`group flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2 transition-colors duration-200 ${
@@ -178,8 +179,9 @@ const Sidebar: React.FC<SidebarProps> = () => {
                 <span className="text-sm">{subItem.label}</span>
               </div>
             ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

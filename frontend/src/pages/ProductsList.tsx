@@ -66,38 +66,38 @@ export default function ProductsList() {
 
 
   return (
-    <div className="flex-1 bg-gray-50">
-      <div className="p-6">
+    <div className="bg-gray-50">
+      <div className="p-3 lg:p-6">
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-xl font-medium">Mahsulotlar ro'yxati</h1>
           </div>
           
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-3 mb-6">
-            <button className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <button className=" w-full flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
               <Plus size={18} />
               <span>Mahsulotlarni Exceldan qo'shish</span>
             </button>
             <button 
               onClick={() => setIsBulkAddModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800"
+              className=" w-full flex items-center gap-2 px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800"
             >
               <Plus size={18} />
               <span>Mahsulotlarni ko'p miqdorda qo'shish</span>
             </button>
             <button 
               onClick={() => setIsAddModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800"
+              className=" w-full flex items-center gap-2 px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800"
             >
               <ShoppingCart size={18} />
               <span>Yangi mahsulot qo'shish</span>
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
+            <button className=" w-full flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
               <FileDown size={18} />
               <span>Excel'da yuklab olish</span>
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800">
+            <button className=" w-full flex items-center gap-2 px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800">
               <Download size={18} />
               <span>Mahsulotlarni birlashtirish</span>
             </button>
