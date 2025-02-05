@@ -66,7 +66,7 @@ export default function ProductsList() {
 
 
   return (
-    <div className=" bg-gray-50">
+    <div className="bg-gray-50">
       <div className="p-3 lg:p-6">
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">

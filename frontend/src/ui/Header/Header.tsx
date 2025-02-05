@@ -9,11 +9,11 @@ const Header: React.FC<HeaderProps> = () => {
     <header className="w-full bg-white border-b px-4 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <button className="lg:hidden">
+          <button className="md:hidden">
             <Menu size={24} />
           </button>
           <h1 className="text-xl font-medium">Xozmat.uz</h1>
-          <div className="hidden md:flex space-x-2">
+          <div className="hidden lg:flex space-x-2">
             <button className="px-3 py-1 rounded bg-green-700 text-white">Giudko</button>
             <button className="px-3 py-1 rounded hover:bg-gray-100">So'm</button>
             <button className="px-3 py-1 rounded hover:bg-gray-100">O'zbekcha</button>
@@ -25,11 +25,11 @@ const Header: React.FC<HeaderProps> = () => {
             <MessageSquare size={20} />
             <span>Balans: 7 500</span>
           </div>
-          <Maximize2 className="hidden md:block text-gray-600" size={20} />
+          {/* <Maximize2 className="hidden md:block text-gray-600" size={20} /> */}
           <Bell className="text-gray-600" size={20} />
           <div className="flex items-center space-x-2">
             <User className="text-gray-600" size={20} />
-            <span className="hidden md:inline">998974200996</span>
+            <span className="hidden lg:inline">998974200996</span>
           </div>
         </div>
       </div>
