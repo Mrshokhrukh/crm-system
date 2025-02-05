@@ -10,7 +10,7 @@ const RootLayout: React.FC<RootLayoutProps> = () => {
   return (
     <div className="flex gap-2">
       {/* <div className={`fixed ${isOpen ? "left-0" : "left-[-100%]"} sm:static z-50 transition-all duration-200`}> */}
-      <div className={`hidden sm:block`}>
+      <div className={`max-w-[320px] hidden sm:block`}>
         <Sidebar />
       </div>
       <div className="w-full">

@@ -65,7 +65,7 @@ const Login: React.FC<LoginProps> = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex items-center justify-center bg-cover">
+    <div className="bg-gray-50 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-md shadow-sm border w-full max-w-md">
         <h1 className="text-2xl font-semibold text-center mb-5 uppercase">
           Login

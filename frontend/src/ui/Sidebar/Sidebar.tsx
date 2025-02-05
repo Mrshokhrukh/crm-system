@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RoleRoutes } from "../../router/roleBasedRoutes";
 import useAuth from "../../hooks/useAuth";
-import { CircleCheck } from "lucide-react";
+import { CircleCheck, X } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 import {
@@ -27,55 +27,60 @@ import {
   DollarSign,
 } from "lucide-react";
 
-const menuItems = [
-  { icon: LayoutDashboard, label: "Bosh sahifa", path: "/dashboard" },
-  {
-    icon: Package,
-    label: "Mahsulotlar",
-    subItems: [
-      { icon: ListOrdered, label: "Mahsulotlar royxati", path: "/products" },
-      { icon: ShoppingCart, label: "Sotuvlar royxati", path: "/sales" },
-      { icon: Download, label: "Tushirilgan mahsulotlar royxati", path: "/downloaded-products" },
-      { icon: RotateCcw, label: "Qaytgan mahsulotlar royxati", path: "/returned-products" },
-      { icon: ClipboardList, label: "Buyurtmalar royxati", path: "/orders" },
-      { icon: History, label: "Mahsulotlar tarixi", path: "/product-history" },
-      { icon: Boxes, label: "Turkunlar royxati", path: "/categories" },
-      { icon: Tags, label: "Teglar royxati", path: "/tags" },
-      { icon: SlidersHorizontal, label: "Atributlar royxati", path: "/attributes" },
-      { icon: Building2, label: "Tashkilotning barcha mahsulotlari", path: "/organization-products" },
-      { icon: LineChart, label: "Qoldiqlar ozgarish tarixi", path: "/stock-history" },
-      { icon: DollarSign, label: "Narxlar ozgarish tarixi", path: "/price-history" },
-    ],
-  },
-  { icon: Package, label: "Ombar", path: "/warehouse" },
-  { icon: PieChart, label: "Ishlab chiqarish", path: "/production" },
-  { icon: Handshake, label: "Yetkazuvchilar", path: "/suppliers" },
-  { icon: Users, label: "Mijozlar", path: "/customers" },
-];
+// const menuItems = [
+//   { icon: LayoutDashboard, title: "Bosh sahifa", path: "/dashboard" },
+//   {
+//     icon: Package,
+//     title: "Mahsulotlar",
+//     subItems: [
+//       { icon: ListOrdered, title: "Mahsulotlar royxati", path: "/products" },
+//       { icon: ShoppingCart, title: "Sotuvlar royxati", path: "/sales" },
+//       { icon: Download, title: "Tushirilgan mahsulotlar royxati", path: "/downloaded-products" },
+//       { icon: RotateCcw, title: "Qaytgan mahsulotlar royxati", path: "/returned-products" },
+//       { icon: ClipboardList, title: "Buyurtmalar royxati", path: "/orders" },
+//       { icon: History, title: "Mahsulotlar tarixi", path: "/product-history" },
+//       { icon: Boxes, title: "Turkunlar royxati", path: "/categories" },
+//       { icon: Tags, title: "Teglar royxati", path: "/tags" },
+//       { icon: SlidersHorizontal, title: "Atributlar royxati", path: "/attributes" },
+//       { icon: Building2, title: "Tashkilotning barcha mahsulotlari", path: "/organization-products" },
+//       { icon: LineChart, title: "Qoldiqlar ozgarish tarixi", path: "/stock-history" },
+//       { icon: DollarSign, title: "Narxlar ozgarish tarixi", path: "/price-history" },
+//     ],
+//   },
+//   { icon: Package, title: "Ombar", path: "/warehouse" },
+//   { icon: PieChart, title: "Ishlab chiqarish", path: "/production" },
+//   { icon: Handshake, title: "Yetkazuvchilar", path: "/suppliers" },
+//   { icon: Users, title: "Mijozlar", path: "/customers" },
+// ];
 
 type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
   const { user } = useAuth();
 
+  const routes = RoleRoutes["CUSTOMER"];
+  // const routes = RoleRoutes[user?.role?.toUpperCase()];
+
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [activeSubItem, setActiveSubItem] = useState<string | null>(null);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [subMenuOpen, setSubmenuOpen] = useState(false);
 
-  const subItems = menuItems?.find((val: any) => val.label === "Mahsulotlar")?.subItems;
+  const subItems = routes?.find((val: any) => val.title === "Mahsulotlar")?.subItems;
 
-  const toggleSubmenu = (label: string) => {
-    setActiveMenu(activeMenu === label ? null : label);
+  const toggleSubmenu = (title: string) => {
+    setActiveMenu(activeMenu === title ? null : title);
+    setSubmenuOpen(!subMenuOpen);
   };
 
   const handleNavigation = (path?: string) => {
     if (path) {
       navigate(path);
       setIsSidebarOpen(false);
-
       setActiveMenu(null);
+      setSubmenuOpen(false);
     }
   };
 
@@ -92,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [window.innerWidth]);
+  }, [window.innerWidth, windowWidth]);
 
   // console.log("in sidebar user: ", user);
 
@@ -127,18 +132,18 @@ const Sidebar: React.FC<SidebarProps> = () => {
   // );
 
   return (
-    <div className="relative flex h-screen">
-      <div className={`bg-white border-r shadow-sm h-full transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-20"}`}>
+    <div className="relative flex h-screen w-full">
+      <div className={`bg-white border-r shadow-sm h-full transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-0 sm:w-20"}`}>
         <div className="p-4">
-          {menuItems.map((item, index) => (
+          {routes.map((item, index) => (
             <div key={index}>
               <div
                 className={`hover:bg-slate-100 flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2${
-                  activeMenu === item.label ? "bg-green-50 text-green-700" : "hover:bg-gray-200"
+                  activeMenu === item.title ? "bg-green-50 text-green-700" : "hover:bg-gray-200"
                 }`}
                 onClick={() => {
-                  if (item.subItems) {
-                    toggleSubmenu(item.label);
+                  if (item?.subItems) {
+                    toggleSubmenu(item.title);
                   } else if (item.path) {
                     handleNavigation(item.path);
                   }
@@ -147,8 +152,8 @@ const Sidebar: React.FC<SidebarProps> = () => {
                 <item.icon size={20} />
                 {isSidebarOpen && (
                   <>
-                    <span className="flex-1">{item.label}</span>
-                    {item.subItems && <ChevronDown size={16} className={`transform transition-transform ${activeMenu === item.label ? "rotate-[90deg]" : "rotate-[-90deg]"}`} />}
+                    <span className="flex-1">{item.title}</span>
+                    {item.subItems && <ChevronDown size={16} className={`transform transition-transform ${subMenuOpen ? "rotate-[90deg]" : "rotate-[-90deg]"}`} />}
                   </>
                 )}
               </div>
@@ -157,26 +162,32 @@ const Sidebar: React.FC<SidebarProps> = () => {
         </div>
       </div>
       {subItems && (
-        <div className={`absolute left-[-300px] md:left-64 bg-white z-50 border-r h-full overflow-y-auto transition-all duration-300 ${activeMenu === "Mahsulotlar" ? "w-64 opacity-100" : "w-0 opacity-0"}`}>
+        <div
+          className={`absolute left-[-300px] sm:left-20 md:left-64 bg-white z-50 border-r h-full overflow-y-auto 
+        transition-all duration-300 ${subMenuOpen ? "w-64 opacity-100" : "w-0 opacity-0"}`}
+        >
           <div className="p-4">
-            <div className="mb-4">
+            <div className="mb-4 flex items-center justify-between  ">
               <h3 className="text-sm font-medium text-gray-500 px-3">Mahsulotlar bo'limi</h3>
+              <div className="bg-slate-100 hover:bg-slate-200 rounded p-1 cursor-pointer" onClick={() => setSubmenuOpen(false)}>
+                <X size={20} />
+              </div>
             </div>
-            {subItems.map((subItem, index) => (
+            {subItems?.map((subItem: any, index: number) => (
               <div
                 key={index}
                 className={`group flex items-center space-x-3 p-3 rounded-lg cursor-pointer mb-2 transition-colors duration-200 ${
-                  activeSubItem === subItem.label ? "bg-green-50 text-green-700" : "hover:bg-gray-50"
+                  activeSubItem === subItem.title ? "bg-green-50 text-green-700" : "hover:bg-gray-50"
                 }`}
                 onClick={() => {
-                  setActiveSubItem(subItem.label);
+                  setActiveSubItem(subItem.title);
                   handleNavigation(subItem.path);
                 }}
               >
-                <div className={`p-1.5 rounded-lg ${activeSubItem === subItem.label ? "bg-green-100" : "bg-gray-100 group-hover:bg-gray-200"}`}>
-                  <subItem.icon size={16} className={activeSubItem === subItem.label ? "text-green-700" : "text-gray-600 group-hover:text-gray-700"} />
+                <div className={`p-1.5 rounded-lg ${activeSubItem === subItem.title ? "bg-green-100" : "bg-gray-100 group-hover:bg-gray-200"}`}>
+                  <subItem.icon size={16} className={activeSubItem === subItem.title ? "text-green-700" : "text-gray-600 group-hover:text-gray-700"} />
                 </div>
-                <span className="text-sm">{subItem.label}</span>
+                <span className="text-sm">{subItem.title}</span>
               </div>
             ))}
           </div>
