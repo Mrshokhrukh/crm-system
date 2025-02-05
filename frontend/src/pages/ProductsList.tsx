@@ -66,15 +66,15 @@ export default function ProductsList() {
 
 
   return (
-    <div className="bg-gray-50">
+    <div className="w-full bg-gray-50">
       <div className="p-3 lg:p-6">
-        <div className="mb-6">
+        <div className="mb-6 space-y-2">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-xl font-medium">Mahsulotlar ro'yxati</h1>
           </div>
           
           {/* Action Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
             <button className=" w-full flex items-center gap-2 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
               <Plus size={18} />
               <span>Mahsulotlarni Exceldan qo'shish</span>
@@ -138,8 +138,8 @@ export default function ProductsList() {
           </div>
 
           {/* Products Table */}
-          <div className="bg-white rounded-lg shadow overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
+          {/* <div className=" rounded-lg shadow overflow-x-auto">
+            <table className="w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="w-12 px-6 py-3">
@@ -241,7 +241,8 @@ export default function ProductsList() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </div> */}
+
         </div>
       </div>
 

@@ -97,12 +97,13 @@ const Sidebar: React.FC<SidebarProps> = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [window.innerWidth]);
-
+  }, [window.innerWidth, windowWidth]);
 
   useEffect(() => {
     if (windowWidth < 768) {
       setIsSidebarOpen(false);
+    } else {
+      setIsSidebarOpen(true);
     }
   }, []);
 
@@ -170,7 +171,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
       </div>
       {subItems && (
         <div
-          className={`absolute left-[-300px] sm:left-20 md:left-64 bg-white z-50 border-r h-full overflow-y-auto 
+          className={`absolute left-[-300px] sm:left-20 ${isSidebarOpen ? "md:left-64" : ""} bg-white z-50 border-r h-full overflow-y-auto 
         transition-all duration-300 ${subMenuOpen ? "w-64 opacity-100" : "w-0 opacity-0"}`}
         >
           <div className="p-4">

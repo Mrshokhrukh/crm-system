@@ -13,9 +13,9 @@ const RootLayout: React.FC<RootLayoutProps> = () => {
       <div className={`max-w-[320px] hidden sm:block`}>
         <Sidebar />
       </div>
-      <div className="flex-1 bg-red-400">
+      <div className="flex-1">
         <Header />
-        {/* <Outlet /> */}
+        <Outlet />
       </div>
     </div>
   );
