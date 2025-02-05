@@ -97,7 +97,14 @@ const Sidebar: React.FC<SidebarProps> = () => {
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [window.innerWidth, windowWidth]);
+  }, [window.innerWidth]);
+
+
+  useEffect(() => {
+    if (windowWidth < 768) {
+      setIsSidebarOpen(false);
+    }
+  }, []);
 
   // console.log("in sidebar user: ", user);
 
