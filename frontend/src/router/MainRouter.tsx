@@ -8,18 +8,37 @@ import PrivateRouter from "./PrivateRouter";
 import { useSelector } from "react-redux";
 import Home from "../pages/Home";
 import ProductsList from "../pages/ProductsList";
+import useAuth from "../hooks/useAuth";
 
 const createRouteByRole = (userRole: any) => {
   const routes = RoleRoutes[userRole?.toUpperCase()] || [];
-  return routes.map(({ path, element }) => ({
-    path,
-    element: React.createElement(element),
-  }));
+
+  return routes.flatMap((route) => {
+    const { path, element, subItems } = route;
+    if (subItems && subItems.length > 0) {
+      return [
+        {
+          path,
+          element: React.createElement(element),
+          children: subItems.map(({ path: subPath, element: subElement }) => ({
+            path: subPath,
+            element: React.createElement(subElement),
+          })),
+        },
+      ];
+    }
+    return {
+      path,
+      element: React.createElement(element),
+    };
+  });
 };
 
 type MainRouterProps = {};
 
 const MainRouter: React.FC<MainRouterProps> = () => {
+  const { user } = useAuth();
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -32,19 +51,7 @@ const MainRouter: React.FC<MainRouterProps> = () => {
           <RootLayout />
         </PrivateRouter>
       ),
-      children: [
-        {
-          index: true,
-          path: "/dashboard",
-          element: <Home />,
-        },
-        {
-          index: true,
-          path: "/products",
-          element: <ProductsList />,
-        },
-      ],
-      // createRouteByRole(user?.role)
+      children: createRouteByRole("customer"),
     },
   ]);
 
