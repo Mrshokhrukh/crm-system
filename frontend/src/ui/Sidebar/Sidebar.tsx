@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const handleNavigation = (path?: string) => {
     if (path) {
       navigate(path);
-      setIsSidebarOpen(false);
+      // setIsSidebarOpen(false);
       setActiveMenu(null);
       setSubmenuOpen(false);
     }

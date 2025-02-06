@@ -1,3 +1,4 @@
+import ProductsLayout from "../layout/ProductsLayout";
 import Home from "../pages/Home";
 import ProductsList from "../pages/ProductsList";
 // import Registration from "../pages/registration/Registration";
@@ -42,12 +43,12 @@ export const RoleRoutes: RoutesType = {
   ADMIN: [
     { icon: LayoutDashboard, title: "Bosh sahifa", path: ROUTES.DASHBOARD, element: Home },
     {
-      element: ProductsList,
+      element: ProductsLayout,
       icon: Package,
       title: "Mahsulotlar",
       path: "/products",
       subItems: [
-        { element: Home, icon: ListOrdered, title: "Mahsulotlar royxati", path: "/products/lists" },
+        { element: ProductsList, icon: ListOrdered, title: "Mahsulotlar royxati", path: "/products/lists" },
         { element: Home, icon: ShoppingCart, title: "Sotuvlar royxati", path: "/products/sales" },
         { element: Home, icon: Download, title: "Tushirilgan mahsulotlar royxati", path: "/products/downloaded-products" },
         { element: Home, icon: RotateCcw, title: "Qaytgan mahsulotlar royxati", path: "/products/returned-products" },
@@ -69,7 +70,7 @@ export const RoleRoutes: RoutesType = {
   CUSTOMER: [
     { icon: LayoutDashboard, title: "Bosh sahifa", path: ROUTES.DASHBOARD, element: Home },
     {
-      element: ProductsList,
+      element: ProductsLayout,
       icon: Package,
       title: "Mahsulotlar",
       path: "/products",

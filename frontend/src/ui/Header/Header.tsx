@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = () => {
     <header className="w-full bg-white border-b px-4 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <button className="md:hidden">
+          <button className="md">
             <Menu size={24} />
           </button>
           <h1 className="text-xl font-medium">Xozmat.uz</h1>

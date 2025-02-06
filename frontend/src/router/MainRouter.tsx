@@ -1,13 +1,9 @@
 import React from "react";
 import { RoleRoutes } from "./roleBasedRoutes";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ROUTES } from "../utils/enums";
 import Login from "../pages/Login";
 import RootLayout from "../layout/RootLayout";
 import PrivateRouter from "./PrivateRouter";
-import { useSelector } from "react-redux";
-import Home from "../pages/Home";
-import ProductsList from "../pages/ProductsList";
 import useAuth from "../hooks/useAuth";
 
 const createRouteByRole = (userRole: any) => {
