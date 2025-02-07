@@ -138,8 +138,9 @@ export default function ProductsList() {
           </div>
 
           {/* Products Table */}
-          {/* <div className=" rounded-lg shadow overflow-x-auto">
+          <div className=" rounded-lg shadow overflow-x-auto">
             <table className="w-full divide-y divide-gray-200">
+              
               <thead className="bg-gray-50">
                 <tr>
                   <th className="w-12 px-6 py-3">
@@ -240,8 +241,11 @@ export default function ProductsList() {
                   </tr>
                 ))}
               </tbody>
+
             </table>
-          </div> */}
+          </div>
+
+          
 
         </div>
       </div>
